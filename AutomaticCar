@@ -1,0 +1,41 @@
+int sensorpin1 = 3;
+int sensorpin2 = 2;
+int wheelpin_1 = 5;
+int wheelpin_2 = 6;
+int wheelpin1 = 9;
+int wheelpin2 = 10;
+void setup() { 
+  pinMode(wheelpin1 , OUTPUT);
+  pinMode(wheelpin1 , OUTPUT);
+  pinMode(wheelpin_1 , OUTPUT);
+  pinMode(wheelpin_2 , OUTPUT);  
+
+}
+
+void loop() {
+  delay(50);
+  int n = digitalRead(sensorpin1);
+  int m = digitalRead(sensorpin2);
+  if(n == HIGH && m == HIGH){
+    analogWrite(wheelpin_2 , 80);
+    analogWrite(wheelpin_1 , 255);
+    analogWrite(wheelpin2 , 100);
+    analogWrite(wheelpin1 , 255);
+  }else if(n == LOW && m == LOW){
+    analogWrite(wheelpin_1 , 90);
+    analogWrite(wheelpin1 , 130);
+    analogWrite(wheelpin_2 , 255);
+    analogWrite(wheelpin2 , 255);
+  }else if(!(n == HIGH && m == LOW)){
+    analogWrite(wheelpin_1 , 255);
+    analogWrite(wheelpin1 , 255);
+    analogWrite(wheelpin2 , 255);
+    analogWrite(wheelpin_2 , 130);
+  }else if(!(n == LOW && m == HIGH)){
+    analogWrite(wheelpin2 , 150);
+    analogWrite(wheelpin_2 , 255);
+    analogWrite(wheelpin_1 , 255);
+    analogWrite(wheelpin1 , 255);
+  }
+  delay(10);
+}
